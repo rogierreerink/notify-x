@@ -21,7 +21,7 @@ if [[ $NID == "" ]]; then
 	echo "0" >> $TMP_NID; NID=0
 fi
 
-export DISPLAY=:0
+DISPLAY=:0
 NID=$(/usr/bin/notify-send $APPLICATION -i $ICON -h int:value:$BRIGHTNESS -r $NID -p)
 echo "$NID" > $TMP_NID
 
