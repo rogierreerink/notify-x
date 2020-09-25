@@ -22,7 +22,7 @@ fi
 
 NID=$(cat $TMP_NID)
 if [[ $NID == "" ]]; then
-	echo "0" >> $TMP_NID; NID=0
+	echo "0" > $TMP_NID; NID=0
 fi
 
 DISPLAY=:0
