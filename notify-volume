@@ -1,7 +1,7 @@
 #!/bin/sh
 # Volume notification program for PulseAudio.
 
-APPLICATION="volume-notification"
+APPLICATION="notify-volume"
 ICON_LOW="audio-volume-low-symbolic"
 ICON_MID="audio-volume-medium-symbolic"
 ICON_HIGH="audio-volume-high-symbolic"
