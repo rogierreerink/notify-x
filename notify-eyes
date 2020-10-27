@@ -1,0 +1,19 @@
+#!/bin/sh
+# Rest-your-eyes notification program.
+# Run every 20 minutes.
+
+APPLICATION="notify-eyes"
+ICON="user-not-tracked-symbolic.symbolic"
+TIME_FILE="/tmp/${APPLICATION}-last_run"
+TIME_ELAPSED=`expr $(date +%s) - $(stat -c %Y $TIME_FILE)`
+
+# Only notify if time file was touched about 20 minutes ago, so it won't run
+# when, for example, cron is trying to catch up after a resume (unless it does
+# that about 20 minutes after the last notification).
+if (( $TIME_ELAPSED > 1140 && $TIME_ELAPSED < 1260 )); then
+	/usr/bin/notify-send $APPLICATION -i $ICON -p \
+		"Rest your eyes for a minute."
+fi
+
+touch $TIME_FILE
+
