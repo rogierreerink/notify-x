@@ -2,10 +2,9 @@
 # Rest-your-eyes notification program.
 # Run every 20 minutes.
 
-# Only notify if a notification hasn't been send yet or was send about 20
-# minutes ago, so it won't run when, for example, cron is trying to catch up
-# after a resume (unless it does that about 20 minutes after the last 
-# notification).
+# Only notify if this script was run about 20 minutes ago, so it won't run
+# when, for example, cron is trying to catch up after a resume (unless it
+# does that about 20 minutes after the last run).
 
 # A cron job should specify the the display to show the notification on and 
 # the dbus address to send it to: DISPLAY=... DBUS_SESSION_BUS_ADDRESS=...
@@ -20,7 +19,7 @@ if [[ $NID == "" ]]; then
 fi
 
 TIME_ELAPSED=`expr $(date +%s) - $(stat -c %Y $TMP_NID)`
-if (( $TIME_ELAPSED > 1140 && $TIME_ELAPSED < 1260 )); then
+if (( $TIME_ELAPSED > 1170 && $TIME_ELAPSED < 1230 )); then
 	NID=$(/usr/bin/notify-send $APPLICATION -i $ICON -u CRITICAL -t 0 \
 		-r $NID -p "Rest your eyes for a minute.")
 fi
