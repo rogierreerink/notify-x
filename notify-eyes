@@ -2,15 +2,15 @@
 # Rest-your-eyes notification program.
 # Run every 20 minutes.
 
-# Only notify if this script was run about 20 minutes ago, so it won't run
-# when, for example, cron is trying to catch up after a resume (unless it
-# does that about 20 minutes after the last run).
+# Only notify if this script updated the NID file about 20 minutes ago,
+# so it won't when, for example, cron is trying to catch up after a resume
+# (unless it does that about 20 minutes after the last run).
 
 # A cron job should specify the the display to show the notification on and 
 # the dbus address to send it to: DISPLAY=... DBUS_SESSION_BUS_ADDRESS=...
 
 APPLICATION="notify-eyes"
-ICON="user-not-tracked-symbolic"
+ICON="view-reveal-symbolic"
 TMP_NID="/tmp/${APPLICATION}-id"
 
 NID=$(cat $TMP_NID)
@@ -24,5 +24,7 @@ if (( $TIME_ELAPSED > 1170 && $TIME_ELAPSED < 1230 )); then
 		-r $NID -p "Rest your eyes for a minute.")
 fi
 
-echo $NID > $TMP_NID
+if (( $TIME_ELAPSED > 1170 )); then
+	echo $NID > $TMP_NID
+fi
 
