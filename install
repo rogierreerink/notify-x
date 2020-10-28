@@ -5,12 +5,14 @@ PWD="$PWD/$(dirname ${0})"
 
 SRC=(
 	"$PWD/notify-backlight"
+	"$PWD/notify-eyes"
 	"$PWD/notify-microphone"
 	"$PWD/notify-volume"
 )
 
 DST=(
 	"$HOME/.local/bin/notify-backlight"
+	"$HOME/.local/bin/notify-eyes"
 	"$HOME/.local/bin/notify-microphone"
 	"$HOME/.local/bin/notify-volume"
 )
